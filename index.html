@@ -185,8 +185,41 @@
     </section>
 
     <footer>
-        Mal podemos esperar por este dia!
+        <div id="countdown" style="margin-bottom: 20px; font-family: 'Inter', sans-serif; letter-spacing: 2px; font-style: normal; font-weight: 400;">
+            A carregar contador...
+        </div>
+        <p>Mal podemos esperar por este dia!</p>
     </footer>
 
+    <script>
+        function updateCountdown() {
+            const dataCasamento = new Date('October 10, 2026 14:30:00').getTime();
+            const agora = new Date().getTime();
+            const diferenca = dataCasamento - agora;
+
+            if (diferenca > 0) {
+                // Cálculos de tempo
+                const diasTotais = Math.floor(diferenca / (1000 * 60 * 60 * 24));
+                
+                // Cálculo aproximado de meses e dias restantes
+                const meses = Math.floor(diasTotais / 30.44);
+                const diasGerais = Math.floor(diasTotais % 30.44);
+
+                let texto = "";
+                if (meses > 0) {
+                    texto += meses + (meses === 1 ? " MÊS " : " MESES ");
+                }
+                texto += "E " + diasGerais + (diasGerais === 1 ? " DIA" : " DIAS");
+
+                document.getElementById('countdown').innerHTML = "FALTAM " + texto;
+            } else {
+                document.getElementById('countdown').innerHTML = "É HOJE!";
+            }
+        }
+
+        // Atualiza ao carregar e depois a cada hora
+        updateCountdown();
+        setInterval(updateCountdown, 3600000); 
+    </script>
 </body>
 </html>
