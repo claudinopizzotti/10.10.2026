@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>O Nosso Casamento | 10.10.2026</title>
+    <title>Sara & Pedro | 10.10.2026</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@200;400&display=swap" rel="stylesheet">
     
@@ -11,8 +11,8 @@
         :root {
             --cor-fundo: #ffffff;
             --cor-texto: #1a1a1a;
-            --verde-escuro: #1b2e1e; /* Verde Floresta */
-            --verde-suave: #f4f7f4;  /* Subtom para caixas */
+            --verde-escuro: #1b2e1e; 
+            --verde-suave: #f4f7f4;
         }
 
         * { box-sizing: border-box; }
@@ -27,7 +27,6 @@
             text-align: center;
         }
 
-        /* Hero / Cabeçalho */
         header {
             height: 100vh;
             display: flex;
@@ -64,7 +63,6 @@
             letter-spacing: 3px;
         }
 
-        /* Secções */
         section {
             padding: 80px 20px;
             max-width: 800px;
@@ -103,7 +101,6 @@
             text-align: center;
         }
 
-        /* Botões */
         .btn {
             display: inline-block;
             margin-top: 30px;
@@ -134,8 +131,7 @@
             padding: 80px 20px;
             background-color: var(--verde-suave);
             font-family: 'Playfair Display', serif;
-            font-style: italic;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             color: var(--verde-escuro);
         }
     </style>
@@ -143,12 +139,12 @@
 <body>
 
     <header>
-        <span class="save-the-date"></span>
+        <span class="save-the-date">Convidamos para o casamento de</span>
         <h1>Sara & Pedro</h1>
         <div class="data-header">10 . 10 . 2026</div>
     </header>
 
-    <section>
+    <section id="localizacao">
         <h2>A Celebração</h2>
         <p>A vossa presença é o que tornará este dia verdadeiramente especial.</p>
         
@@ -164,31 +160,40 @@
             Sábado, 10 de Outubro de 2026<br>
             Às 14:30 horas</p>
         </div>
-        <a href="https://www.google.com/maps/search/?api=1&query=Solar+de+Pancas+Alenquer" target="_blank" class="btn">Ver Localização</a>
+        <a href="https://www.google.com/maps/search/?api=1&query=Solar+de+Quinta+de+Pancas+Alenquer" target="_blank" class="btn">Ver Localização</a>
     </section>
 
     <div class="separator"></div>
 
-    <section>
+    <section id="dress-code">
+        <h2>Dress Code</h2>
+        <p><strong>Social Completo</strong></p>
+        <p>Pedimos, com carinho, que evitem roupas em tons de branco, off-white ou semelhantes.<br>
+        Para os homens, fato completo com gravata e sapato.<br>
+        Para as mulheres, vestidos longos.</p>
+    </section>
+
+    <div class="separator"></div>
+
+    <section id="confirmacao">
         <h2>Confirmação</h2>
         <p>Por favor, confirme a sua presença até ao dia 31 de Agosto de 2026.</p>
-        
         <a href="https://docs.google.com/forms/d/e/1FAIpQLSe-AQ2B0B8ePdsccMUF1N14Z5vZq31uENM-Ic8Z_wBX6tqTAQ/viewform?pli=1" target="_blank" class="btn">Confirmar via Google Forms</a>
     </section>
 
     <div class="separator"></div>
 
-    <section>
+    <section id="presentes">
         <h2>Presentes</h2>
         <p>O nosso maior presente é a vossa companhia. Se desejarem contribuir para a nossa nova etapa, podem fazê-lo aqui.</p>
         <a href="#" class="btn">Lista de Presentes / IBAN</a>
     </section>
 
     <footer>
-        <div id="countdown" style="margin-bottom: 20px; font-family: 'Inter', sans-serif; letter-spacing: 2px; font-style: normal; font-weight: 400;">
+        <div id="countdown" style="margin-bottom: 20px; font-family: 'Inter', sans-serif; letter-spacing: 2px; font-weight: 400; text-transform: uppercase; font-size: 0.9rem;">
             A carregar contador...
         </div>
-        <p>Mal podemos esperar por este dia!</p>
+        <p style="font-family: 'Playfair Display', serif; font-style: italic;">Mal podemos esperar por este dia!</p>
     </footer>
 
     <script>
@@ -198,28 +203,27 @@
             const diferenca = dataCasamento - agora;
 
             if (diferenca > 0) {
-                // Cálculos de tempo
                 const diasTotais = Math.floor(diferenca / (1000 * 60 * 60 * 24));
-                
-                // Cálculo aproximado de meses e dias restantes
                 const meses = Math.floor(diasTotais / 30.44);
-                const diasGerais = Math.floor(diasTotais % 30.44);
+                const diasRestantes = Math.floor(diasTotais % 30.44);
 
-                let texto = "";
+                let texto = "FALTAM ";
                 if (meses > 0) {
                     texto += meses + (meses === 1 ? " MÊS " : " MESES ");
+                    if (diasRestantes > 0) texto += "E ";
                 }
-                texto += "E " + diasGerais + (diasGerais === 1 ? " DIA" : " DIAS");
+                if (diasRestantes > 0 || meses === 0) {
+                    texto += diasRestantes + (diasRestantes === 1 ? " DIA" : " DIAS");
+                }
 
-                document.getElementById('countdown').innerHTML = "FALTAM " + texto;
+                document.getElementById('countdown').innerHTML = texto;
             } else {
                 document.getElementById('countdown').innerHTML = "É HOJE!";
             }
         }
-
-        // Atualiza ao carregar e depois a cada hora
         updateCountdown();
-        setInterval(updateCountdown, 3600000); 
+        setInterval(updateCountdown, 3600000);
     </script>
+
 </body>
 </html>
