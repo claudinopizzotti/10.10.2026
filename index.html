@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="pt-pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O Nosso Casamento | 10.10.2026</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@200;400&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --cor-fundo: #ffffff;
+            --cor-detalhe: #9e8a78; /* Taupe elegante */
+            --cor-texto: #2c2c2c;
+            --cor-suave: #fcfaf8;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+            background-color: var(--cor-fundo);
+            color: var(--cor-texto);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Hero / Cabeçalho */
+        header {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background-color: var(--cor-suave);
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .save-the-date {
+            font-size: 0.75rem;
+            letter-spacing: 0.4em;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            color: var(--cor-detalhe);
+            font-weight: 400;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            font-weight: 400;
+            margin: 0;
+            font-style: italic;
+        }
+
+        .data-header {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            margin-top: 20px;
+        }
+
+        /* Secções */
+        section {
+            padding: 100px 20px;
+            max-width: 800px;
+            margin: auto;
+            text-align: center;
+        }
+
+        h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 400;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        h2::after {
+            content: "";
+            display: block;
+            width: 40px;
+            height: 1px;
+            background: var(--cor-detalhe);
+            margin: 15px auto 0;
+        }
+
+        p {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            font-weight: 300;
+            color: #555;
+        }
+
+        .local-box {
+            background-color: var(--cor-suave);
+            padding: 40px;
+            border-radius: 4px;
+            margin-top: 30px;
+        }
+
+        /* Botão Estilizado */
+        .btn {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 18px 45px;
+            border: 1px solid var(--cor-detalhe);
+            color: var(--cor-detalhe);
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.75rem;
+            transition: all 0.4s ease;
+            background: transparent;
+        }
+
+        .btn:hover {
+            background-color: var(--cor-detalhe);
+            color: white;
+            letter-spacing: 3px;
+        }
+
+        /* Divisor */
+        .separator {
+            width: 1px;
+            height: 80px;
+            background-color: var(--cor-detalhe);
+            margin: 0 auto;
+            opacity: 0.3;
+        }
+
+        footer {
+            padding: 80px 20px;
+            background-color: var(--cor-suave);
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 1.2rem;
+        }
+
+        @media (max-width: 600px) {
+            header { height: 80vh; }
+            section { padding: 60px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <span class="save-the-date">Convidamos para o casamento de</span>
+        <h1>Nome & Nome</h1>
+        <div class="data-header">10 . 10 . 2026</div>
+    </header>
+
+    <section>
+        <h2>A Celebração</h2>
+        <p>A vossa presença é o que tornará este dia verdadeiramente especial. <br>
+        Juntem-se a nós para celebrar o amor, a amizade e o futuro.</p>
+        
+        <div class="local-box">
+            <p><strong>ONDE</strong><br>
+            Nome da Quinta / Espaço<br>
+            Rua Exemplo, nº 123, Cidade</p>
+            <p><strong>QUANDO</strong><br>
+            Sábado, 10 de Outubro de 2026<br>
+            Às 16:00 horas</p>
+        </div>
+        <a href="https://maps.google.com" target="_blank" class="btn">Ver Localização</a>
+    </section>
+
+    <div class="separator"></div>
+
+    <section>
+        <h2>Confirmação</h2>
+        <p>Para nos ajudar com a organização, pedimos a gentileza de confirmar a sua presença até ao dia <strong>10 de Agosto de 2026</strong>.</p>
+        
+        <a href="https://wa.me/351910000000?text=Olá! Ficamos muito felizes com o convite e confirmamos a nossa presença no dia 10/10/2026." class="btn">Confirmar via WhatsApp</a>
+    </section>
+
+    <div class="separator"></div>
+
+    <section>
+        <h2>Presentes</h2>
+        <p>O nosso maior presente é ter-vos connosco. Caso desejem contribuir para a nossa nova etapa, podem consultar a nossa lista ou IBAN clicando abaixo.</p>
+        <a href="#" class="btn">Lista de Presentes</a>
+    </section>
+
+    <footer>
+        Até breve!
+    </footer>
+
+</body>
+</html>
