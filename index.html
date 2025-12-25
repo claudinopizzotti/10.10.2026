@@ -1,3 +1,9 @@
+Com certeza! Fiz as alterações no teu código para incluir a caixa de IBAN que expande ao clicar, tornando o site muito mais funcional e moderno.
+
+Aqui está o código completo. Podes copiar tudo e substituir no teu ficheiro do GitHub:
+
+HTML
+
 <!DOCTYPE html>
 <html lang="pt-pt">
 <head>
@@ -112,11 +118,28 @@
             letter-spacing: 2px;
             font-size: 0.75rem;
             transition: all 0.4s ease;
+            background: transparent;
+            cursor: pointer;
         }
 
         .btn:hover {
             background-color: var(--verde-escuro);
             color: white;
+        }
+
+        /* Estilo para a caixa do IBAN */
+        .iban-box {
+            background-color: var(--verde-suave);
+            border: 1px dashed var(--verde-escuro);
+            padding: 25px;
+            margin-top: 20px;
+            display: none; /* Começa escondido */
+            animation: fadeIn 0.5s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
         .separator {
@@ -186,7 +209,13 @@
     <section id="presentes">
         <h2>Presentes</h2>
         <p>O nosso maior presente é a vossa companhia. Se desejarem contribuir para a nossa nova etapa, podem fazê-lo aqui.</p>
-        <a href="#" class="btn">Lista de Presentes / IBAN</a>
+        <button onclick="toggleIBAN()" class="btn">Ver Dados de Oferta / IBAN</button>
+
+        <div id="dados-iban" class="iban-box">
+            <p><strong>TITULAR:</strong> Sara & Pedro</p>
+            <p><strong>IBAN:</strong> PT50 0000 0000 0000 0000 0000 0</p>
+            <p><small>Agradecemos de coração o vosso gesto!</small></p>
+        </div>
     </section>
 
     <footer>
@@ -197,6 +226,16 @@
     </footer>
 
     <script>
+        // Função para mostrar ou esconder o IBAN
+        function toggleIBAN() {
+            var x = document.getElementById("dados-iban");
+            if (x.style.display === "none" || x.style.display === "") {
+                x.style.display = "block";
+            } else {
+                x.style.display = "none";
+            }
+        }
+
         function updateCountdown() {
             const dataCasamento = new Date('October 10, 2026 14:30:00').getTime();
             const agora = new Date().getTime();
