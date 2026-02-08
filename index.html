@@ -42,7 +42,6 @@
             width: 250px;
             height: auto;
             margin-bottom: 20px;
-            /* Esta configuração ajuda a mostrar apenas as letras brancas no fundo verde */
             mix-blend-mode: screen; 
         }
 
@@ -111,14 +110,21 @@
         }
 
         .hospedagem-item {
+            display: block;
+            text-decoration: none;
+            color: inherit;
             background: var(--verde-suave);
             padding: 25px;
             border-radius: 8px;
             border-bottom: 4px solid var(--verde-escuro);
-            transition: transform 0.3s ease;
+            transition: all 0.3s ease;
         }
 
-        .hospedagem-item:hover { transform: translateY(-5px); }
+        .hospedagem-item:hover { 
+            transform: translateY(-5px);
+            background: #ebf2eb;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
 
         .hospedagem-item h3 {
             font-family: 'Playfair Display', serif;
@@ -131,10 +137,10 @@
 
         .btn {
             display: inline-block;
-            margin-top: 30px;
+            margin: 10px;
             padding: 18px 45px;
             background-color: var(--verde-escuro);
-            color: white;
+            color: white !important;
             text-decoration: none;
             text-transform: uppercase;
             letter-spacing: 2px;
@@ -148,7 +154,7 @@
         .btn-outline {
             background: none;
             border: 1px solid var(--verde-escuro);
-            color: var(--verde-escuro);
+            color: var(--verde-escuro) !important;
         }
 
         .separator {
@@ -203,5 +209,52 @@
                 <p><strong>FESTA</strong><br>Solar de Pancas<br>Alenquer</p><br>
                 <p><strong>HORÁRIO</strong><br>10 de Outubro de 2026 às 14:30</p>
             </div>
-            <img src="Soolar de pancas.jpeg" alt="Solar de Pancas" class="localizacao-
-            
+            <img src="Soolar de pancas.jpeg" alt="Solar de Pancas" class="localizacao-foto">
+        </div>
+        <div style="margin-top: 30px;">
+            <a href="https://www.google.com/maps/search/?api=1&query=Igreja+de+Nossa+Senhora+do+O+Vilar+Alenquer" target="_blank" class="btn">Mapa da Igreja</a>
+            <a href="https://www.google.com/maps/search/?api=1&query=Solar+de+Pancas+Alenquer" target="_blank" class="btn">Mapa da Quinta</a>
+        </div>
+    </section>
+
+    <div class="separator"></div>
+
+    <section id="dress-code">
+        <h2>Dress Code</h2>
+        <p><strong>SOCIAL COMPLETO</strong></p>
+        <p>Pedimos que evitem tons de branco ou off-white.</p>
+        <p>Fato completo para homens e vestidos longos ou midi para mulheres.</p>
+    </section>
+
+    <div class="separator"></div>
+
+    <section id="confirmacao">
+        <h2>Confirmação</h2>
+        <p>Por favor, confirme a sua presença até ao dia 31 de Agosto de 2026.</p>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSe-AQ2B0B8ePdsccMUF1N14Z5vZq31uENM-Ic8Z_wBX6tqTAQ/viewform?pli=1" target="_blank" class="btn">Confirmar Presença</a>
+    </section>
+
+    <div class="separator"></div>
+
+    <section id="presentes">
+        <h2>Presentes</h2>
+        <p>O mais importante para nós é celebrar este dia convosco.</p>
+        <button onclick="toggleIBAN()" class="btn btn-outline">Ver Dados de Oferta</button>
+        <div id="dados-iban" class="iban-box">
+            <p style="margin-bottom: 20px;">Se quiserem ajudar no início desta nova fase, podem fazê-lo através do nosso IBAN ou MBWAY:</p>
+            <p style="font-family: monospace; font-size: 1.1rem; margin-bottom: 10px;"><strong>IBAN:</strong><br>PT50 0045 5120 4015 9811 9169 6</p>
+            <p style="font-family: monospace; font-size: 1.1rem;"><strong>MBWAY:</strong><br>910 652 284</p>
+        </div>
+    </section>
+
+    <div class="separator"></div>
+
+    <section id="hospedagem">
+        <h2>Hospedagem</h2>
+        <p style="margin-bottom: 30px;">Clique nas opções abaixo para abrir os sites oficiais:</p>
+        <div class="hospedagem-grid">
+            <a href="http://www.alenquerusticampingpark.com/" target="_blank" class="hospedagem-item"><h3>Alenquer 4BR - Pancas (1 min)</h3><p>reservations.portugal@joivy.com</p><p>Telm: 918 887 235</p></a>
+            <a href="https://casadalbarrois.com/" target="_blank" class="hospedagem-item"><h3>Casa D'Albarróis (5 min)</h3><p>Albarróis</p><p>Telm: 926 071 917</p></a>
+            <a href="https://quintadapontinha.pt/" target="_blank" class="hospedagem-item"><h3>Quinta da Pontinha (8 min)</h3><p>Alenquer</p><p>Telm: 968 410 548</p></a>
+            <a href="https://www.cambeirosguesthouse.com/" target="_blank" class="hospedagem-item"><h3>Cambeiros Guest House (10 min)</h3><p>Aldeia Gavinha</p><p>Telm: 961 028 610</p></a>
+            <a href
