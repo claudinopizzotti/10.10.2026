@@ -8,19 +8,24 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
     
     <style>
+        /* RESET TOTAL */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
         :root {
             --verde-escuro: #1b2e1e; 
             --verde-suave: #f4f7f4;
             --texto: #2c3e50;
             --cor-envelope: #1a1a1a;
-            --selo-preto: #0f0f0f;
         }
 
-        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body, html { 
+            height: 100%; 
+            width: 100%; 
+            background-color: #ffffff;
+            font-family: 'Inter', sans-serif;
+        }
 
-        body, html { height: 100%; width: 100%; margin: 0; padding: 0; }
-
-        /* --- TELA DO ENVELOPE (INTRO) --- */
+        /* --- TELA DO ENVELOPE --- */
         #intro-overlay {
             position: fixed;
             top: 0; left: 0;
@@ -31,60 +36,55 @@
             justify-content: center;
             align-items: center;
             z-index: 10000;
-            transition: transform 1s cubic-bezier(0.77, 0, 0.175, 1);
-            overflow: hidden;
+            transition: transform 1.2s cubic-bezier(0.77, 0, 0.175, 1);
+            cursor: pointer; /* O ecrã inteiro é clicável para não falhar */
         }
 
         .titulo-intro {
             font-family: 'Playfair Display', serif;
-            font-size: clamp(1.8rem, 5vw, 2.5rem);
+            font-size: clamp(1.8rem, 5vw, 2.8rem);
             color: var(--cor-envelope);
             margin-bottom: 40px;
             font-style: italic;
+            pointer-events: none;
         }
 
-        /* Envelope Maior */
         .envelope-wrapper {
             position: relative;
-            width: clamp(320px, 80vw, 450px);
-            height: clamp(220px, 50vw, 300px);
+            width: clamp(320px, 80vw, 480px);
+            height: clamp(220px, 50vw, 320px);
             background-color: var(--cor-envelope);
-            cursor: pointer;
             box-shadow: 0 20px 50px rgba(0,0,0,0.3);
             display: flex;
             justify-content: center;
             align-items: center;
-            transition: transform 0.3s ease;
+            pointer-events: none; /* Deixa o clique passar para o overlay pai */
         }
-
-        .envelope-wrapper:hover { transform: scale(1.03); }
 
         .envelope-flap {
             position: absolute;
             top: 0; left: 0;
             width: 0; height: 0;
-            border-left: clamp(160px, 40vw, 225px) solid transparent;
-            border-right: clamp(160px, 40vw, 225px) solid transparent;
-            border-top: clamp(110px, 25vw, 150px) solid #2a2a2a;
+            border-left: clamp(160px, 40vw, 240px) solid transparent;
+            border-right: clamp(160px, 40vw, 240px) solid transparent;
+            border-top: clamp(110px, 25vw, 160px) solid #2a2a2a;
             z-index: 2;
         }
 
-        /* Selo de Cera Preto */
         .selo {
             position: absolute;
-            width: 65px;
-            height: 65px;
+            width: 70px;
+            height: 70px;
             background: radial-gradient(circle at 30% 30%, #333, #000);
             border-radius: 50%;
             z-index: 3;
-            box-shadow: inset 0 0 10px rgba(255,255,255,0.1), 0 5px 15px rgba(0,0,0,0.6);
+            box-shadow: inset 0 0 10px rgba(255,255,255,0.2), 0 5px 15px rgba(0,0,0,0.6);
             display: flex;
             justify-content: center;
             align-items: center;
             color: #fff;
             font-family: 'Playfair Display', serif;
-            font-size: 1.1rem;
-            font-weight: bold;
+            font-size: 1.2rem;
             border: 1px solid #111;
         }
 
@@ -96,16 +96,15 @@
             text-transform: uppercase;
             color: #999;
             animation: pulse 2s infinite;
+            pointer-events: none;
         }
 
         @keyframes pulse { 0%, 100% { opacity: 0.4; } 50% { opacity: 1; } }
 
         /* --- CONTEÚDO DO SITE --- */
         #site-content {
-            position: relative;
-            width: 100%;
-            min-height: 100vh;
-            display: block; /* Garante visibilidade */
+            opacity: 0; /* Começa invisível para não "piscar" atrás do envelope */
+            transition: opacity 1s ease;
         }
 
         header {
@@ -135,6 +134,7 @@
 
         .btn { display: inline-block; margin: 10px; padding: 18px 45px; background-color: var(--verde-escuro); color: white !important; text-decoration: none; text-transform: uppercase; letter-spacing: 2px; font-size: 0.8rem; border-radius: 50px; cursor: pointer; border: none; }
         .btn-outline { background: none; border: 1px solid var(--verde-escuro); color: var(--verde-escuro) !important; }
+        
         .iban-box { background: #fff; border: 1px dashed var(--verde-escuro); padding: 30px; margin-top: 25px; display: none; border-radius: 8px; text-align: center; }
         .separator { width: 80px; height: 1px; background: #ccc; margin: 40px auto; }
         footer { padding: 80px 20px; background: var(--verde-escuro); color: white; text-align: center; }
@@ -142,9 +142,11 @@
         @media (max-width: 768px) { header { background-attachment: scroll; } .localizacao-foto { height: 300px; } }
     </style>
 </head>
-<body style="overflow: hidden;"> <div id="intro-overlay">
+<body style="overflow: hidden;">
+
+    <div id="intro-overlay" onclick="abrirEnvelope()">
         <h2 class="titulo-intro">Casamento Sara & Pedro</h2>
-        <div class="envelope-wrapper" onclick="abrirEnvelope()">
+        <div class="envelope-wrapper">
             <div class="envelope-flap"></div>
             <div class="selo">S&P</div>
         </div>
@@ -196,5 +198,70 @@
         <section id="presentes">
             <h2>Presentes</h2>
             <p>O mais importante para nós é celebrar este dia convosco.</p>
-            <button onclick="toggleIban()" class="btn btn-outline">Ver Dados de Oferta</button>
-            <div id="dados-iban" class="iban-
+            <button onclick="event.stopPropagation(); toggleIban();" class="btn btn-outline">Ver Dados de Oferta</button>
+            <div id="dados-iban" class="iban-box">
+                <p>Se quiserem ajudar nesta nova fase:</p><br>
+                <p style="font-family: monospace; font-size: 1.1rem;"><strong>IBAN:</strong> PT50 0045 5120 4015 9811 9169 6</p>
+                <p style="font-family: monospace; font-size: 1.1rem;"><strong>MBWAY:</strong> 910 652 284</p>
+            </div>
+        </section>
+
+        <div class="separator"></div>
+
+        <section id="hospedagem">
+            <h2>Hospedagem</h2>
+            <div class="hospedagem-grid">
+                <a href="https://casadalbarrois.com/" target="_blank" class="hospedagem-item"><h3>Casa D'Albarróis</h3><p>Telm: 926 071 917</p></a>
+                <a href="https://quintadapontinha.pt/" target="_blank" class="hospedagem-item"><h3>Quinta da Pontinha</h3><p>Telm: 968 410 548</p></a>
+                <a href="https://www.cambeirosguesthouse.com/" target="_blank" class="hospedagem-item"><h3>Cambeiros Guest House</h3><p>Telm: 961 028 610</p></a>
+                <a href="https://www.instagram.com/pomardachoca" target="_blank" class="hospedagem-item"><h3>Pomar da Choca</h3><p>Telm: 936 584 343</p></a>
+                <a href="https://www.highvilla.pt/" target="_blank" class="hospedagem-item"><h3>High Villa</h3><p>Telm: 966 340 834</p></a>
+                <a href="https://www.pateodaslaranjeiras.com/" target="_blank" class="hospedagem-item"><h3>Páteo das Laranjeiras</h3><p>Abrigada</p></a>
+                <a href="https://abadaserra.pt/" target="_blank" class="hospedagem-item"><h3>Aba da Serra</h3><p>Abrigada</p></a>
+                <a href="https://www.soisecolodge.com/" target="_blank" class="hospedagem-item"><h3>SÓIS Eco Lodge</h3><p>Telm: 925 674 703</p></a>
+                <div class="hospedagem-item"><h3>Alenquer 4BR - Pancas</h3><p>918 887 235</p></div>
+                <div class="hospedagem-item"><h3>Quinta Ribeira do Labrador</h3><p>918 797 355</p></div>
+                <div class="hospedagem-item"><h3>Quinta do Covanco</h3><p>937 328 449</p></div>
+                <div class="hospedagem-item"><h3>Casa Santo António</h3><p>925 491 553</p></div>
+                <div class="hospedagem-item"><h3>AL Embaixador</h3><p>913 761 784</p></div>
+                <div class="hospedagem-item"><h3>Vila Presépio</h3><p>961 729 157</p></div>
+                <div class="hospedagem-item"><h3>Casa Velha</h3><p>916 891 806</p></div>
+                <div class="hospedagem-item"><h3>Hospedaria Sanches</h3><p>263 733 051</p></div>
+                <div class="hospedagem-item"><h3>Brave Empathy</h3><p>Olhalvo</p></div>
+            </div>
+        </section>
+
+        <footer>
+            <p id="countdown" style="font-weight: bold; letter-spacing: 2px; margin-bottom: 10px;"></p>
+            <p>Mal podemos esperar!</p>
+        </footer>
+    </main>
+
+    <script>
+        function abrirEnvelope() {
+            // Desliza a intro para cima
+            document.getElementById('intro-overlay').style.transform = 'translateY(-100%)';
+            // Mostra o conteúdo com fade in
+            document.getElementById('site-content').style.opacity = '1';
+            // Reativa o scroll
+            document.body.style.overflow = 'auto';
+        }
+
+        function toggleIban() {
+            var x = document.getElementById("dados-iban");
+            x.style.display = (x.style.display === "none" || x.style.display === "") ? "block" : "none";
+        }
+
+        function updateCountdown() {
+            const dataCasamento = new Date('2026-10-10T14:30:00').getTime();
+            const agora = new Date().getTime();
+            const diff = dataCasamento - agora;
+            if (diff > 0) {
+                const dias = Math.floor(diff / (1000 * 60 * 60 * 24));
+                document.getElementById('countdown').innerHTML = "FALTAM " + dias + " DIAS";
+            }
+        }
+        updateCountdown();
+    </script>
+</body>
+</html>
