@@ -23,27 +23,31 @@
             background-color: #ffffff;
             color: var(--texto);
             line-height: 1.6;
+            overflow-x: hidden;
         }
 
-        /* Cabeçalho */
+        /* Cabeçalho com Imagem de Fundo (Parallax) */
         header {
             height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            background-color: var(--verde-escuro);
+            /* A imagem do Solar fica por trás no início */
+            background: linear-gradient(rgba(27, 46, 30, 0.7), rgba(27, 46, 30, 0.7)), 
+                        url('Soolar de pancas.jpeg') center/cover no-repeat fixed;
             color: white;
             text-align: center;
             padding: 20px;
         }
 
         .monograma {
-            width: 280px;
+            width: 250px;
             height: auto;
             margin-bottom: 20px;
-            /* Se a imagem tiver fundo branco, este comando ajuda a misturar */
-            mix-blend-mode: multiply; 
+            /* Se o monograma for verde com fundo branco, isto ajuda a isolar as letras no fundo escuro */
+            mix-blend-mode: screen; 
+            filter: brightness(1.2);
         }
 
         h1 {
@@ -60,17 +64,11 @@
         }
 
         /* Seções */
-        section {
-            padding: 80px 20px;
-            max-width: 1000px;
-            margin: auto;
-            text-align: center;
-        }
+        section { padding: 80px 20px; max-width: 1100px; margin: auto; text-align: center; }
 
         h2 {
             font-family: 'Playfair Display', serif;
-            font-size: 2.2rem;
-            color: var(--verde-escuro);
+            font-size: 2.2rem; color: var(--verde-escuro);
             margin-bottom: 30px;
         }
 
@@ -79,11 +77,11 @@
             background: var(--verde-escuro); margin: 15px auto 0;
         }
 
-        /* Localização com Imagens */
+        /* Localização */
         .localizacao-container {
             display: flex;
             flex-wrap: wrap;
-            align-items: center;
+            align-items: stretch;
             justify-content: center;
             gap: 20px;
             margin-top: 30px;
@@ -92,8 +90,8 @@
         .localizacao-foto {
             flex: 1;
             min-width: 280px;
-            max-width: 320px;
-            height: 400px;
+            max-width: 350px;
+            height: 450px;
             object-fit: cover;
             border-radius: 4px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
@@ -104,6 +102,9 @@
             min-width: 300px;
             background-color: var(--verde-suave);
             padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
             border-radius: 4px;
         }
 
@@ -111,23 +112,23 @@
         .btn {
             display: inline-block;
             margin-top: 25px;
-            padding: 15px 35px;
+            padding: 18px 40px;
             background-color: var(--verde-escuro);
             color: white;
             text-decoration: none;
             text-transform: uppercase;
             letter-spacing: 2px;
-            font-size: 0.8rem;
-            border-radius: 2px;
+            font-size: 0.75rem;
+            border-radius: 50px;
             transition: 0.3s;
         }
 
-        .btn:hover { background-color: #2a452e; transform: translateY(-2px); }
+        .btn:hover { background-color: #2a452e; transform: translateY(-2px); box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
 
         /* Hospedagem (Cards) */
         .hospedagem-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 20px;
             margin-top: 40px;
             text-align: left;
@@ -136,15 +137,23 @@
         .hospedagem-item {
             background: var(--verde-suave);
             padding: 25px;
-            border-radius: 4px;
-            border-bottom: 3px solid var(--verde-escuro);
+            border-radius: 8px;
+            border-left: 4px solid var(--verde-escuro);
+            transition: 0.3s;
         }
+
+        .hospedagem-item:hover { transform: scale(1.02); background: #ebf0eb; }
 
         .hospedagem-item h3 {
             font-family: 'Playfair Display', serif;
-            margin-top: 0;
+            margin: 0 0 10px 0;
+            font-size: 1.15rem;
             color: var(--verde-escuro);
         }
+
+        .hospedagem-item p { margin: 5px 0; font-size: 0.9rem; }
+
+        .hospedagem-item a { color: var(--verde-escuro); font-weight: 500; text-decoration: underline; }
 
         .iban-box {
             background-color: var(--verde-suave);
@@ -154,28 +163,20 @@
             display: none;
         }
 
-        .separator {
-            width: 1px; height: 60px;
-            background-color: var(--verde-escuro);
-            margin: 40px auto; opacity: 0.2;
-        }
+        .separator { width: 60px; height: 1px; background-color: var(--verde-escuro); margin: 60px auto; opacity: 0.2; }
 
         footer {
             padding: 80px 20px;
-            background-color: var(--verde-suave);
-            color: var(--verde-escuro);
+            background-color: var(--verde-escuro);
+            color: white;
         }
 
-        #countdown {
-            font-size: 1.1rem;
-            letter-spacing: 2px;
-            margin-bottom: 20px;
-            font-weight: 500;
-        }
+        #countdown { font-size: 1.1rem; letter-spacing: 4px; margin-bottom: 20px; }
 
         @media (max-width: 768px) {
             .localizacao-container { flex-direction: column; }
-            .localizacao-foto { width: 100%; max-width: 100%; height: 250px; }
+            .localizacao-foto { width: 100%; max-width: 100%; height: 280px; }
+            header { background-attachment: scroll; } /* Melhor para telemóveis */
         }
     </style>
 </head>
@@ -189,98 +190,5 @@
 
     <section id="localizacao">
         <h2>A Celebração</h2>
-        <p>A vossa presença é o que tornará este dia verdadeiramente especial.</p>
+        <p>A vossa presença é o que tornará este
         
-        <div class="localizacao-container">
-            <img src="Igreja.jpeg" alt="Igreja" class="localizacao-foto">
-
-            <div class="local-box">
-                <p><strong>CERIMÓNIA</strong><br>
-                Igreja de Nossa Senhora do Ó, Vilar</p>
-                <p><strong>COPO D'ÁGUA E FESTA</strong><br>
-                Solar de Pancas<br>
-                Quinta de Pancas, 2580-354 Alenquer</p>
-                <p><strong>HORÁRIO</strong><br>
-                Sábado, 10 de Outubro de 2026<br>
-                Às 14:30 horas</p>
-            </div>
-
-            <img src="Soolar de pancas.jpeg" alt="Solar de Pancas" class="localizacao-foto">
-        </div>
-        
-        <a href="https://maps.google.com" target="_blank" class="btn">Ver Localização</a>
-    </section>
-
-    <div class="separator"></div>
-
-    <section id="dress-code">
-        <h2>Dress Code</h2>
-        <p><strong>SOCIAL COMPLETO</strong></p>
-        <p>Pedimos, com carinho, que evitem roupas em tons de branco ou off-white.<br>
-        Fato completo para homens e vestidos longos para mulheres.</p>
-    </section>
-
-    <div class="separator"></div>
-
-    <section id="confirmacao">
-        <h2>Confirmação</h2>
-        <p>Por favor, confirme a sua presença até ao dia 31 de Agosto de 2026.</p>
-        <a href="https://docs.google.com/forms/..." target="_blank" class="btn">Confirmar Presença</a>
-    </section>
-
-    <div class="separator"></div>
-
-    <section id="presentes">
-        <h2>Presentes</h2>
-        <p>O nosso maior presente é a vossa companhia.</p>
-        <button onclick="toggleIBAN()" class="btn" style="background: none; color: var(--verde-escuro); border: 1px solid var(--verde-escuro);">Lista de Presentes / IBAN</button>
-        <div id="dados-iban" class="iban-box">
-            <p><strong>TITULAR:</strong> Sara & Pedro</p>
-            <p><strong>IBAN:</strong> PT50 0000 0000 0000 0000 0000 0</p>
-        </div>
-    </section>
-
-    <div class="separator"></div>
-
-    <section id="hospedagem">
-        <h2>Hospedagem</h2>
-        <div class="hospedagem-grid">
-            <div class="hospedagem-item">
-                <h3>Alenquer 4BR - Pancas (1 min)</h3>
-                <p>reservations.portugal@joivy.com<br>918 887 235</p>
-            </div>
-            <div class="hospedagem-item">
-                <h3>Casa D'Albarróis (5 min)</h3>
-                <p>926 071 917</p>
-            </div>
-            <div class="hospedagem-item">
-                <h3>Quinta da Pontinha (8 min)</h3>
-                <p>968 410 548</p>
-            </div>
-        </div>
-    </section>
-
-    <footer>
-        <div id="countdown">Faltam...</div>
-        <p style="font-family: 'Playfair Display', serif; font-style: italic;">Mal podemos esperar por este dia!</p>
-    </footer>
-
-    <script>
-        function toggleIBAN() {
-            var x = document.getElementById("dados-iban");
-            x.style.display = (x.style.display === "none" || x.style.display === "") ? "block" : "none";
-        }
-
-        function updateCountdown() {
-            const data = new Date('October 10, 2026 14:30:00').getTime();
-            const agora = new Date().getTime();
-            const diff = data - agora;
-            if (diff > 0) {
-                const dias = Math.floor(diff / (1000 * 60 * 60 * 24));
-                document.getElementById('countdown').innerHTML = "FALTAM " + dias + " DIAS";
-            }
-        }
-        updateCountdown();
-    </script>
-</body>
-</html>
