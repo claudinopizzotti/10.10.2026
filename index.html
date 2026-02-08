@@ -111,4 +111,162 @@
             color: white; text-align: center; padding: 20px;
         }
 
-        header h1 { font-family: 'Playfair Display', serif; font-size: clamp(3.5rem, 12vw,
+        header h1 { font-family: 'Playfair Display', serif; font-size: clamp(3.5rem, 12vw, 6rem); font-style: italic; margin-bottom: 10px; }
+        .data-header { font-family: 'Playfair Display', serif; font-size: 1.6rem; letter-spacing: 6px; border-top: 1px solid rgba(255,255,255,0.4); padding-top: 15px; }
+
+        section { padding: 100px 20px; max-width: 1200px; margin: auto; text-align: center; }
+        h2 { font-family: 'Playfair Display', serif; font-size: 3rem; color: var(--verde-escuro); margin-bottom: 50px; }
+        
+        .localizacao-container { display: flex; flex-wrap: wrap; gap: 40px; margin-top: 40px; justify-content: center; align-items: stretch; }
+        .localizacao-foto { flex: 1; min-width: 300px; max-width: 400px; height: 500px; object-fit: cover; border-radius: 4px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        .local-box { flex: 1; min-width: 320px; background-color: var(--verde-suave); padding: 60px 40px; border-radius: 4px; display: flex; flex-direction: column; justify-content: center; }
+
+        .hospedagem-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 25px; margin-top: 50px; text-align: left; }
+        .hospedagem-item { display: block; background: var(--verde-suave); padding: 30px; border-radius: 4px; text-decoration: none; color: inherit; transition: 0.3s; border-left: 6px solid var(--verde-escuro); }
+        a.hospedagem-item:hover { transform: translateY(-5px); background: #e8eee8; }
+        .hospedagem-item h3 { font-family: 'Playfair Display', serif; font-size: 1.2rem; margin-bottom: 12px; color: var(--verde-escuro); }
+
+        .btn { display: inline-block; margin: 15px; padding: 20px 50px; background-color: var(--verde-escuro); color: white !important; text-decoration: none; text-transform: uppercase; letter-spacing: 2px; font-size: 0.85rem; border-radius: 0; cursor: pointer; transition: 0.3s; border: none; }
+        .btn:hover { background-color: #2c4a30; }
+        .btn-outline { background: none; border: 1px solid var(--verde-escuro); color: var(--verde-escuro) !important; }
+        
+        .iban-box { background: #fff; border: 1px solid #ddd; padding: 40px; margin: 30px auto; max-width: 550px; display: none; border-radius: 4px; }
+        .separator { width: 120px; height: 1px; background: #ccc; margin: 80px auto; opacity: 0.5; }
+        
+        footer { padding: 100px 20px; background: var(--verde-escuro); color: white; text-align: center; }
+        #countdown { font-size: 1.4rem; letter-spacing: 5px; margin-bottom: 20px; font-family: 'Playfair Display', serif; font-weight: bold; }
+
+        @media (max-width: 768px) { 
+            header { background-attachment: scroll; }
+            .localizacao-foto { height: 350px; width: 100%; }
+        }
+    </style>
+</head>
+<body style="overflow: hidden;">
+
+    <div id="intro-overlay" onclick="abrirEnvelope()">
+        <h2 class="titulo-intro">Sara & Pedro</h2>
+        <div class="envelope-wrapper">
+            <div class="envelope-flap"></div>
+            <div class="selo">S & P</div>
+        </div>
+        <p class="instrucao">Clique em qualquer lugar para abrir</p>
+    </div>
+
+    <main id="site-content">
+        <header>
+            <h1>Sara & Pedro</h1>
+            <div class="data-header">10 . 10 . 2026</div>
+        </header>
+
+        <section id="celebracao">
+            <h2>A Celebração</h2>
+            <div class="localizacao-container">
+                <img src="Igreja.jpeg" alt="Igreja" class="localizacao-foto">
+                <div class="local-box">
+                    <p style="letter-spacing: 2px; color: #888; text-transform: uppercase; font-size: 0.8rem;">Cerimónia</p>
+                    <p><strong>Igreja de Nossa Senhora do Ó</strong><br>Vilar, Cadaval</p>
+                    <br><br>
+                    <p style="letter-spacing: 2px; color: #888; text-transform: uppercase; font-size: 0.8rem;">Copo d'Água</p>
+                    <p><strong>Solar de Pancas</strong><br>Alenquer</p>
+                    <br><br>
+                    <p style="letter-spacing: 2px; color: #888; text-transform: uppercase; font-size: 0.8rem;">Horário</p>
+                    <p>Sábado, 10 de Outubro de 2026 às 14:30</p>
+                </div>
+                <img src="Soolar de pancas.jpeg" alt="Solar de Pancas" class="localizacao-foto">
+            </div>
+            <div style="margin-top: 50px;">
+                <a href="https://maps.app.goo.gl/uX6Yn8fE9m8j9Vw37" target="_blank" class="btn">Localização Igreja</a>
+                <a href="https://maps.app.goo.gl/8J2x1Tq3p4N6m8Gv8" target="_blank" class="btn">Localização Quinta</a>
+            </div>
+        </section>
+
+        <div class="separator"></div>
+
+        <section id="dress-code">
+            <h2>Dress Code</h2>
+            <p><strong>SOCIAL COMPLETO</strong></p>
+            <p>&nbsp;</p> <p>Pedimos que evitem tons de branco ou off-white.</p>
+            <p>Fato completo para os senhores e vestidos longos ou midi para as senhoras.</p>
+        </section>
+
+        <div class="separator"></div>
+
+        <section id="confirmacao">
+            <h2>Confirmação</h2>
+            <p>Por favor, confirmem a vossa presença até ao dia 31 de Agosto de 2026.</p>
+            <br>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSe-AQ2B0B8ePdsccMUF1N14Z5vZq31uENM-Ic8Z_wBX6tqTAQ/viewform" target="_blank" class="btn">Confirmar Presença</a>
+        </section>
+
+        <div class="separator"></div>
+
+        <section id="presentes">
+            <h2>Presentes</h2>
+            <p>O mais importante para nós é celebrar este dia convosco.<br>Se desejarem contribuir para o início da nossa vida a dois:</p>
+            <br>
+            <button onclick="toggleIban(event)" class="btn btn-outline">Ver Dados de Oferta</button>
+            <div id="dados-iban" class="iban-box">
+                <p><strong>IBAN:</strong> PT50 0045 5120 4015 9811 9169 6</p>
+                <p><strong>MBWAY:</strong> 910 652 284</p>
+            </div>
+        </section>
+
+        <div class="separator"></div>
+
+        <section id="hospedagem">
+            <h2>Hospedagem</h2>
+            <div class="hospedagem-grid">
+                <a href="https://casadalbarrois.com/" target="_blank" class="hospedagem-item"><h3>Casa D'Albarróis</h3><p>5 min | Albarróis | 926 071 917</p></a>
+                <a href="https://quintadapontinha.pt/" target="_blank" class="hospedagem-item"><h3>Quinta da Pontinha</h3><p>8 min | Alenquer | 968 410 548</p></a>
+                <a href="https://www.cambeirosguesthouse.com/" target="_blank" class="hospedagem-item"><h3>Cambeiros Guest House</h3><p>10 min | Aldeia Gavinha | 961 028 610</p></a>
+                <a href="https://www.instagram.com/pomardachoca" target="_blank" class="hospedagem-item"><h3>Pomar da Choca</h3><p>6 min | @pomardachoca</p></a>
+                <a href="https://www.highvilla.pt/" target="_blank" class="hospedagem-item"><h3>High Villa</h3><p>7 min | Alenquer | 966 340 834</p></a>
+                <a href="https://www.pateodaslaranjeiras.com/" target="_blank" class="hospedagem-item"><h3>Páteo das Laranjeiras</h3><p>17 min | Abrigada</p></a>
+                <a href="https://abadaserra.pt/" target="_blank" class="hospedagem-item"><h3>Aba da Serra</h3><p>18 min | Abrigada</p></a>
+                <a href="https://www.soisecolodge.com/" target="_blank" class="hospedagem-item"><h3>SÓIS Eco Lodge</h3><p>24 min | 925 674 703</p></a>
+                <div class="hospedagem-item"><h3>Alenquer 4BR - Pancas</h3><p>1 min | 918 887 235</p></div>
+                <div class="hospedagem-item"><h3>Quinta Ribeira do Labrador</h3><p>3 min | 918 797 355</p></div>
+                <div class="hospedagem-item"><h3>Quinta do Covanco</h3><p>7 min | 937 328 449</p></div>
+                <div class="hospedagem-item"><h3>Casa Santo António</h3><p>9 min | 925 491 553</p></div>
+                <div class="hospedagem-item"><h3>AL Embaixador</h3><p>5 min | 913 761 784</p></div>
+                <div class="hospedagem-item"><h3>Vila Presépio</h3><p>5 min | 961 729 157</p></div>
+                <div class="hospedagem-item"><h3>Casa Velha</h3><p>5 min | 916 891 806</p></div>
+                <div class="hospedagem-item"><h3>Hospedaria Sanches</h3><p>7 min | 263 733 051</p></div>
+                <div class="hospedagem-item"><h3>Brave Empathy</h3><p>9 min | Olhalvo</p></div>
+            </div>
+        </section>
+
+        <footer>
+            <div id="countdown"></div>
+            <p style="font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.5rem;">Sara & Pedro</p>
+        </footer>
+    </main>
+
+    <script>
+        function abrirEnvelope() {
+            const overlay = document.getElementById('intro-overlay');
+            overlay.style.opacity = '0';
+            setTimeout(() => {
+                overlay.style.visibility = 'hidden';
+                document.body.style.overflow = 'auto';
+            }, 800);
+        }
+
+        function toggleIban(e) {
+            e.stopPropagation();
+            var x = document.getElementById("dados-iban");
+            x.style.display = (x.style.display === "block") ? "none" : "block";
+        }
+
+        function updateCountdown() {
+            const diff = new Date('2026-10-10T14:30:00') - new Date();
+            if (diff > 0) {
+                const dias = Math.floor(diff / (1000 * 60 * 60 * 24));
+                document.getElementById('countdown').innerHTML = "FALTAM " + dias + " DIAS";
+            }
+        }
+        updateCountdown();
+    </script>
+</body>
+</html>
