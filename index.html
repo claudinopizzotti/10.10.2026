@@ -140,6 +140,8 @@
             font-size: 0.8rem;
             border-radius: 50px;
             transition: 0.3s;
+            cursor: pointer;
+            border: none;
         }
 
         .btn-outline {
@@ -155,8 +157,15 @@
         }
 
         .iban-box {
-            background: #fff; border: 1px dashed var(--verde-escuro);
-            padding: 25px; margin-top: 20px; display: none;
+            background: #fff; 
+            border: 1px dashed var(--verde-escuro);
+            padding: 35px 25px; 
+            margin-top: 25px; 
+            display: none;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            border-radius: 8px;
         }
 
         footer {
@@ -195,7 +204,7 @@
             </div>
             <img src="Soolar de pancas.jpeg" alt="Solar de Pancas" class="localizacao-foto">
         </div>
-        <a href="https://maps.app.goo.gl/W6yv8q7pD7n8mU8A9" target="_blank" class="btn">Ver Localização</a>
+        <a href="https://maps.app.goo.gl/4rXo6H7v9vW8xXmG9" target="_blank" class="btn">Ver Localização</a>
     </section>
 
     <div class="separator"></div>
@@ -218,11 +227,12 @@
 
     <section id="presentes">
         <h2>Presentes</h2>
-        <p>O nosso maior presente é a vossa companhia.</p>
-        <button onclick="toggleIBAN()" class="btn btn-outline">Dados de Oferta / IBAN</button>
+        <p>O mais importante para nós é celebrar este dia convosco.</p>
+        <button onclick="toggleIBAN()" class="btn btn-outline">Ver Dados de Oferta</button>
         <div id="dados-iban" class="iban-box">
-            <p><strong>TITULAR:</strong> Sara & Pedro</p>
-            <p><strong>IBAN:</strong> PT50 0000 0000 0000 0000 0000 0</p>
+            <p style="margin-bottom: 20px;">Se quiserem ajudar no início desta nova fase, podem fazê-lo através do nosso IBAN ou MBWAY:</p>
+            <p style="font-family: monospace; font-size: 1.1rem; margin-bottom: 10px;"><strong>IBAN:</strong><br>PT50 0045 5120 4015 9811 9169 6</p>
+            <p style="font-family: monospace; font-size: 1.1rem;"><strong>MBWAY:</strong><br>910 652 284</p>
         </div>
     </section>
 
