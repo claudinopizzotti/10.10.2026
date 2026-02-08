@@ -8,24 +8,23 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
     
     <style>
+        /* RESET TOTAL PARA GARANTIR VISIBILIDADE */
+        * { box-sizing: border-box; margin: 0; padding: 0; opacity: 1 !important; visibility: visible !important; }
+
         :root {
             --verde-escuro: #1b2e1e; 
             --verde-suave: #f4f7f4;
-            --texto-escuro: #2c3e50;
-            --branco: #ffffff;
+            --texto: #2c3e50;
         }
-
-        * { box-sizing: border-box; margin: 0; padding: 0; }
 
         body {
             font-family: 'Inter', sans-serif;
-            background-color: var(--branco);
-            color: var(--texto-escuro);
+            background-color: #ffffff;
+            color: var(--texto);
             line-height: 1.6;
             overflow-x: hidden;
         }
 
-        /* Cabeçalho Limpo e Elegante */
         header {
             height: 100vh;
             display: flex;
@@ -43,18 +42,13 @@
             font-family: 'Playfair Display', serif;
             font-size: clamp(3.5rem, 12vw, 6rem);
             font-weight: 400; font-style: italic;
-            margin: 0;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
         }
 
         .data-header {
             font-family: 'Playfair Display', serif;
-            font-size: 1.6rem; 
-            margin-top: 20px;
+            font-size: 1.6rem; margin-top: 20px;
             border-top: 1px solid rgba(255,255,255,0.4);
-            padding-top: 15px; 
-            letter-spacing: 6px;
-            text-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            padding-top: 15px; letter-spacing: 6px;
         }
 
         section {
@@ -95,17 +89,13 @@
             background-color: var(--verde-suave);
             padding: 50px 30px;
             border-radius: 8px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
         }
 
         .hospedagem-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             gap: 20px;
             margin-top: 40px;
-            text-align: left;
         }
 
         .hospedagem-item {
@@ -114,13 +104,140 @@
             padding: 25px;
             border-radius: 8px;
             border-bottom: 4px solid var(--verde-escuro);
-            transition: all 0.3s ease;
             text-decoration: none;
             color: inherit;
+            text-align: left;
         }
 
-        /* Hover apenas para os que têm link */
-        a.hospedagem-item:hover { 
-            transform: translateY(-5px);
-            background: #ebf2eb;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        a.hospedagem-item:hover { background: #ebf2eb; transform: translateY(-3px); transition: 0.3s; }
+
+        .btn {
+            display: inline-block;
+            margin: 10px;
+            padding: 18px 45px;
+            background-color: var(--verde-escuro);
+            color: white !important;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.8rem;
+            border-radius: 50px;
+            cursor: pointer;
+        }
+
+        .btn-outline {
+            background: none;
+            border: 1px solid var(--verde-escuro);
+            color: var(--verde-escuro) !important;
+        }
+
+        .iban-box {
+            background: #fff; 
+            border: 1px dashed var(--verde-escuro);
+            padding: 30px; 
+            margin-top: 25px; 
+            display: none;
+            border-radius: 8px;
+        }
+
+        footer { padding: 80px 20px; background: var(--verde-escuro); color: white; text-align: center; }
+        
+        .separator { width: 80px; height: 1px; background: #ccc; margin: 40px auto; }
+
+        @media (max-width: 768px) {
+            header { background-attachment: scroll; }
+            .localizacao-foto { height: 300px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Sara & Pedro</h1>
+        <div class="data-header">10 . 10 . 2026</div>
+    </header>
+
+    <section id="celebracao">
+        <h2>A Celebração</h2>
+        <div class="localizacao-container">
+            <img src="Igreja.jpeg" alt="Igreja" class="localizacao-foto">
+            <div class="local-box">
+                <p><strong>CERIMÓNIA</strong><br>Igreja de Nossa Senhora do Ó, Vilar</p><br>
+                <p><strong>FESTA</strong><br>Solar de Pancas, Alenquer</p><br>
+                <p><strong>HORÁRIO</strong><br>10 de Outubro de 2026 às 14:30</p>
+            </div>
+            <img src="Soolar de pancas.jpeg" alt="Solar de Pancas" class="localizacao-foto">
+        </div>
+        <div style="margin-top:30px">
+            <a href="https://maps.app.goo.gl/9Zp7pB5C9H9M2P7v9" target="_blank" class="btn">Mapa da Igreja</a>
+            <a href="https://maps.app.goo.gl/Xj2e7L6F9mXvB8u58" target="_blank" class="btn">Mapa da Quinta</a>
+        </div>
+    </section>
+
+    <div class="separator"></div>
+
+    <section id="dress-code">
+        <h2>Dress Code</h2>
+        <p><strong>SOCIAL COMPLETO</strong></p>
+        <p>Pedimos que evitem tons de branco ou off-white.</p>
+        <p>Fato completo para homens e vestidos longos ou midi para mulheres.</p>
+    </section>
+
+    <div class="separator"></div>
+
+    <section id="confirmacao">
+        <h2>Confirmação</h2>
+        <p>Por favor, confirme até 31 de Agosto de 2026.</p>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSe-AQ2B0B8ePdsccMUF1N14Z5vZq31uENM-Ic8Z_wBX6tqTAQ/viewform?pli=1" target="_blank" class="btn">Confirmar Presença</a>
+    </section>
+
+    <div class="separator"></div>
+
+    <section id="presentes">
+        <h2>Presentes</h2>
+        <p>O mais importante para nós é celebrar este dia convosco.</p>
+        <button onclick="toggleIban()" class="btn btn-outline">Ver Dados de Oferta</button>
+        <div id="dados-iban" class="iban-box">
+            <p>Se quiserem ajudar nesta nova fase:</p><br>
+            <p><strong>IBAN:</strong> PT50 0045 5120 4015 9811 9169 6</p>
+            <p><strong>MBWAY:</strong> 910 652 284</p>
+        </div>
+    </section>
+
+    <div class="separator"></div>
+
+    <section id="hospedagem">
+        <h2>Hospedagem</h2>
+        <div class="hospedagem-grid">
+            <a href="https://casadalbarrois.com/" target="_blank" class="hospedagem-item"><h3>Casa D'Albarróis</h3><p>Telm: 926 071 917</p></a>
+            <a href="https://quintadapontinha.pt/" target="_blank" class="hospedagem-item"><h3>Quinta da Pontinha</h3><p>Telm: 968 410 548</p></a>
+            <a href="https://www.cambeirosguesthouse.com/" target="_blank" class="hospedagem-item"><h3>Cambeiros Guest House</h3><p>Telm: 961 028 610</p></a>
+            <a href="https://www.instagram.com/pomardachoca" target="_blank" class="hospedagem-item"><h3>Pomar da Choca</h3><p>Telm: 936 584 343</p></a>
+            <a href="https://www.highvilla.pt/" target="_blank" class="hospedagem-item"><h3>High Villa</h3><p>Telm: 966 340 834</p></a>
+            <div class="hospedagem-item"><h3>Alenquer 4BR - Pancas</h3><p>Telm: 918 887 235</p></div>
+            <div class="hospedagem-item"><h3>Quinta do Covanco</h3><p>Telm: 937 328 449</p></div>
+            <div class="hospedagem-item"><h3>Hospedaria Sanches</h3><p>Tel: 263 733 051</p></div>
+            </div>
+    </section>
+
+    <footer>
+        <p id="countdown"></p>
+        <p>Mal podemos esperar!</p>
+    </footer>
+
+    <script>
+        function toggleIban() {
+            var x = document.getElementById("dados-iban");
+            x.style.display = (x.style.display === "none" || x.style.display === "") ? "block" : "none";
+        }
+        function updateCountdown() {
+            const diff = new Date('2026-10-10T14:30:00') - new Date();
+            if (diff > 0) {
+                const dias = Math.floor(diff / (1000 * 60 * 60 * 24));
+                document.getElementById('countdown').innerHTML = "FALTAM " + dias + " DIAS";
+            }
+        }
+        updateCountdown();
+    </script>
+</body>
+</html>
