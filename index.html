@@ -4,21 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sara & Pedro | 10.10.2026</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,700&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
     
     <style>
         :root {
             --verde-escuro: #1b2e1e; 
             --verde-suave: #f4f7f4;
             --texto: #2c3e50;
-            --cor-envelope: #1a1a1a; /* Preto elegante */
+            --cor-envelope: #1a1a1a;
+            --selo-preto: #0f0f0f;
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
 
-        body, html { height: 100%; overflow: hidden; } /* Trava o scroll até abrir */
+        body, html { height: 100%; width: 100%; margin: 0; padding: 0; }
 
-        /* --- ESTILO DO ENVELOPE (INTRO) --- */
+        /* --- TELA DO ENVELOPE (INTRO) --- */
         #intro-overlay {
             position: fixed;
             top: 0; left: 0;
@@ -28,95 +30,91 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            z-index: 9999;
+            z-index: 10000;
             transition: transform 1s cubic-bezier(0.77, 0, 0.175, 1);
+            overflow: hidden;
         }
 
         .titulo-intro {
             font-family: 'Playfair Display', serif;
-            font-size: 2rem;
+            font-size: clamp(1.8rem, 5vw, 2.5rem);
             color: var(--cor-envelope);
-            margin-bottom: 30px;
+            margin-bottom: 40px;
             font-style: italic;
         }
 
+        /* Envelope Maior */
         .envelope-wrapper {
             position: relative;
-            width: 300px;
-            height: 200px;
+            width: clamp(320px, 80vw, 450px);
+            height: clamp(220px, 50vw, 300px);
             background-color: var(--cor-envelope);
             cursor: pointer;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
             display: flex;
             justify-content: center;
             align-items: center;
-            transition: transform 0.3s;
+            transition: transform 0.3s ease;
         }
 
-        .envelope-wrapper:hover { transform: scale(1.05); }
+        .envelope-wrapper:hover { transform: scale(1.03); }
 
-        /* Aba do envelope */
         .envelope-flap {
             position: absolute;
             top: 0; left: 0;
             width: 0; height: 0;
-            border-left: 150px solid transparent;
-            border-right: 150px solid transparent;
-            border-top: 100px solid #2a2a2a;
+            border-left: clamp(160px, 40vw, 225px) solid transparent;
+            border-right: clamp(160px, 40vw, 225px) solid transparent;
+            border-top: clamp(110px, 25vw, 150px) solid #2a2a2a;
             z-index: 2;
         }
 
-        /* Selo de Cera */
+        /* Selo de Cera Preto */
         .selo {
             position: absolute;
-            top: 80px;
-            width: 50px;
-            height: 50px;
-            background: radial-gradient(#8b0000, #5a0000);
+            width: 65px;
+            height: 65px;
+            background: radial-gradient(circle at 30% 30%, #333, #000);
             border-radius: 50%;
             z-index: 3;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+            box-shadow: inset 0 0 10px rgba(255,255,255,0.1), 0 5px 15px rgba(0,0,0,0.6);
             display: flex;
             justify-content: center;
             align-items: center;
-            color: rgba(255,255,255,0.8);
+            color: #fff;
             font-family: 'Playfair Display', serif;
-            font-size: 0.8rem;
+            font-size: 1.1rem;
             font-weight: bold;
-            border: 2px solid #4a0000;
+            border: 1px solid #111;
         }
 
         .instrucao {
-            margin-top: 30px;
+            margin-top: 40px;
             font-family: 'Inter', sans-serif;
-            font-size: 0.9rem;
-            letter-spacing: 2px;
+            font-size: 0.8rem;
+            letter-spacing: 3px;
             text-transform: uppercase;
-            color: #888;
+            color: #999;
             animation: pulse 2s infinite;
         }
 
-        @keyframes pulse {
-            0% { opacity: 0.4; }
-            50% { opacity: 1; }
-            100% { opacity: 0.4; }
-        }
+        @keyframes pulse { 0%, 100% { opacity: 0.4; } 50% { opacity: 1; } }
 
-        /* --- ESTILO DO SITE (CONTEÚDO) --- */
+        /* --- CONTEÚDO DO SITE --- */
         #site-content {
-            height: 100vh;
-            overflow-y: auto;
-            display: none; /* Escondido no início */
+            position: relative;
+            width: 100%;
+            min-height: 100vh;
+            display: block; /* Garante visibilidade */
         }
 
-        /* (Reaproveitando o teu design anterior) */
         header {
             height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            background: linear-gradient(rgba(27, 46, 30, 0.6), rgba(27, 46, 30, 0.6)), 
+            background: linear-gradient(rgba(27, 46, 30, 0.65), rgba(27, 46, 30, 0.65)), 
                         url('Soolar de pancas.jpeg') center/cover no-repeat fixed;
             color: white; text-align: center; padding: 20px;
         }
@@ -129,28 +127,26 @@
         
         .localizacao-container { display: flex; flex-wrap: wrap; gap: 30px; margin-top: 40px; justify-content: center; }
         .localizacao-foto { flex: 1; min-width: 300px; max-width: 380px; height: 450px; object-fit: cover; border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
-        .local-box { flex: 1; min-width: 320px; background-color: var(--verde-suave); padding: 50px 30px; border-radius: 8px; }
+        .local-box { flex: 1; min-width: 320px; background-color: var(--verde-suave); padding: 50px 30px; border-radius: 8px; display: flex; flex-direction: column; justify-content: center; }
 
-        .hospedagem-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; margin-top: 40px; }
-        .hospedagem-item { display: block; background: var(--verde-suave); padding: 25px; border-radius: 8px; border-bottom: 4px solid var(--verde-escuro); text-decoration: none; color: inherit; text-align: left; }
+        .hospedagem-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; margin-top: 40px; text-align: left; }
+        .hospedagem-item { display: block; background: var(--verde-suave); padding: 25px; border-radius: 8px; border-bottom: 4px solid var(--verde-escuro); text-decoration: none; color: inherit; transition: 0.3s; }
         a.hospedagem-item:hover { background: #ebf2eb; transform: translateY(-3px); }
 
         .btn { display: inline-block; margin: 10px; padding: 18px 45px; background-color: var(--verde-escuro); color: white !important; text-decoration: none; text-transform: uppercase; letter-spacing: 2px; font-size: 0.8rem; border-radius: 50px; cursor: pointer; border: none; }
         .btn-outline { background: none; border: 1px solid var(--verde-escuro); color: var(--verde-escuro) !important; }
-        .iban-box { background: #fff; border: 1px dashed var(--verde-escuro); padding: 30px; margin-top: 25px; display: none; border-radius: 8px; }
+        .iban-box { background: #fff; border: 1px dashed var(--verde-escuro); padding: 30px; margin-top: 25px; display: none; border-radius: 8px; text-align: center; }
         .separator { width: 80px; height: 1px; background: #ccc; margin: 40px auto; }
         footer { padding: 80px 20px; background: var(--verde-escuro); color: white; text-align: center; }
 
         @media (max-width: 768px) { header { background-attachment: scroll; } .localizacao-foto { height: 300px; } }
     </style>
 </head>
-<body>
-
-    <div id="intro-overlay">
+<body style="overflow: hidden;"> <div id="intro-overlay">
         <h2 class="titulo-intro">Casamento Sara & Pedro</h2>
         <div class="envelope-wrapper" onclick="abrirEnvelope()">
             <div class="envelope-flap"></div>
-            <div class="selo">S & P</div>
+            <div class="selo">S&P</div>
         </div>
         <p class="instrucao">Clique no envelope para abrir</p>
     </div>
@@ -168,12 +164,12 @@
                 <div class="local-box">
                     <p><strong>CERIMÓNIA</strong><br>Igreja de Nossa Senhora do Ó, Vilar</p><br>
                     <p><strong>FESTA</strong><br>Solar de Pancas, Alenquer</p><br>
-                    <p><strong>HORÁRIO</strong><br>10 de Outubro de 2026 às 14:30</p>
+                    <p><strong>HORÁRIO</strong><br>Sábado, 10 de Outubro de 2026 às 14:30</p>
                 </div>
                 <img src="Soolar de pancas.jpeg" alt="Solar de Pancas" class="localizacao-foto">
             </div>
             <div style="margin-top:30px">
-                <a href="https://www.google.com/maps/search/?api=1&query=Igreja+Nossa+Senhora+do+Ó+Vilar" target="_blank" class="btn">Mapa da Igreja</a>
+                <a href="https://www.google.com/maps/search/?api=1&query=Igreja+Nossa+Senhora+do+O+Vilar" target="_blank" class="btn">Mapa da Igreja</a>
                 <a href="https://www.google.com/maps/search/?api=1&query=Solar+de+Pancas+Alenquer" target="_blank" class="btn">Mapa da Quinta</a>
             </div>
         </section>
@@ -183,7 +179,7 @@
         <section id="dress-code">
             <h2>Dress Code</h2>
             <p><strong>SOCIAL COMPLETO</strong></p>
-            <p>Pedimos que evitem tons de branco ou off-white.</p>
+            <p>Pedimos que evitem tons de branco ou off-white.</p><br>
             <p>Fato completo para homens e vestidos longos ou midi para mulheres.</p>
         </section>
 
@@ -201,20 +197,4 @@
             <h2>Presentes</h2>
             <p>O mais importante para nós é celebrar este dia convosco.</p>
             <button onclick="toggleIban()" class="btn btn-outline">Ver Dados de Oferta</button>
-            <div id="dados-iban" class="iban-box">
-                <p>Se quiserem ajudar nesta nova fase:</p><br>
-                <p><strong>IBAN:</strong> PT50 0045 5120 4015 9811 9169 6</p>
-                <p><strong>MBWAY:</strong> 910 652 284</p>
-            </div>
-        </section>
-
-        <div class="separator"></div>
-
-        <section id="hospedagem">
-            <h2>Hospedagem</h2>
-            <div class="hospedagem-grid">
-                <a href="https://casadalbarrois.com/" target="_blank" class="hospedagem-item"><h3>Casa D'Albarróis</h3><p>Telm: 926 071 917</p></a>
-                <a href="https://quintadapontinha.pt/" target="_blank" class="hospedagem-item"><h3>Quinta da Pontinha</h3><p>Telm: 968 410 548</p></a>
-                <a href="https://www.cambeirosguesthouse.com/" target="_blank" class="hospedagem-item"><h3>Cambeiros Guest House</h3><p>Telm: 961 028 610</p></a>
-                <a href="https://www.instagram.com/pomardachoca" target="_blank" class="hospedagem-item"><h3>Pomar da Choca</h3><p>Telm: 936 584 343</p></a>
-                <a href="https://www.highvilla.pt/" target="_blank" class="hospedagem-item"><h3>High Villa</h3><p>Telm: 966
+            <div id="dados-iban" class="iban-
